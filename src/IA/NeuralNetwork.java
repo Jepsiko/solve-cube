@@ -2,11 +2,11 @@ package IA;
 
 public class NeuralNetwork {
     
-    static int recentAverageSmoothingFactor = 100;
+    private static int recentAverageSmoothingFactor = 100;
     
-    Neuron[][] layers;
-    double error;
-    double recentAverageError;
+    private Neuron[][] layers;
+    private double error;
+    private double recentAverageError;
     
     public NeuralNetwork(int[] topology) {
         recentAverageError = 100;
