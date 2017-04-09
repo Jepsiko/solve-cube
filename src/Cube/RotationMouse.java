@@ -14,7 +14,6 @@ public class RotationMouse extends Behavior {
     private final TransformGroup targetTG;
     private final Transform3D rotationX = new Transform3D();
     private final Transform3D rotationY = new Transform3D();
-    private final float scl = 0.01f;
 
     // constructeur
     RotationMouse(TransformGroup targetTG)
@@ -34,8 +33,9 @@ public class RotationMouse extends Behavior {
     public void processStimulus(Enumeration criteria)
     {
         Point mouse = MouseInfo.getPointerInfo().getLocation();
-        rotationX.rotY(mouse.x*scl);
-        rotationY.rotX(mouse.y*scl);
+        float scl = 0.01f;
+        rotationX.rotY(mouse.x* scl);
+        rotationY.rotX(mouse.y* scl);
         rotationX.mul(rotationY);
         targetTG.setTransform(rotationX);
         // on se remet en attente

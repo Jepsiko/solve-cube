@@ -136,7 +136,7 @@ public class testIA {
                     
                     while(!myCube.isSolved()) {
                         axis = randint.nextInt(3);
-                        axis_c = (char) (axis += 120);
+                        axis_c = (char) (axis + 120);
                         row = randint.nextInt(myCube.maxSide);
 
                         myCube.turnFace(axis_c, row, randint.nextInt(2) == 0);

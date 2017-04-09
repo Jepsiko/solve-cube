@@ -1,11 +1,8 @@
 package IA;
 
 public class NeuralNetwork {
-    
-    private static int recentAverageSmoothingFactor = 100;
-    
+
     private Neuron[][] layers;
-    private double error;
     private double recentAverageError;
     
     public NeuralNetwork(int[] topology) {
@@ -44,7 +41,7 @@ public class NeuralNetwork {
     
     public void backProp(double[] targetVals) {
         Neuron[] outputLayer = layers[layers.length-1];
-        error = 0;
+        double error = 0;
         
         for (int i = 0; i < outputLayer.length-1; i++) {
             double delta = targetVals[i] - outputLayer[i].getOutputVal();
@@ -53,9 +50,10 @@ public class NeuralNetwork {
         
         error /= outputLayer.length-1;
         error = Math.sqrt(error);
-        
-        recentAverageError = recentAverageError*recentAverageSmoothingFactor + error;
-        recentAverageError /= recentAverageSmoothingFactor+1;
+
+        int recentAverageSmoothingFactor = 100;
+        recentAverageError = recentAverageError* recentAverageSmoothingFactor + error;
+        recentAverageError /= recentAverageSmoothingFactor +1;
         
         // Calculate output layer gradients
         

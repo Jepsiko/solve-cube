@@ -3,8 +3,6 @@ package IA;
 import java.util.Random;
 
 class Neuron {
-    private static float eta = 0.15f;
-    private static float alpha = 0.5f;
 
     private double outputVal;
     private Connection[] outputWeights;
@@ -57,7 +55,9 @@ class Neuron {
     void updateInputWeights(Neuron[] prevLayer) {
         for (Neuron neuron : prevLayer) {
             double oldDeltaWeight = neuron.outputWeights[index].deltaWeight;
-            double newDeltaWeight = eta*neuron.getOutputVal()*gradiant + alpha*oldDeltaWeight;
+            float eta = 0.15f;
+            float alpha = 0.5f;
+            double newDeltaWeight = eta *neuron.getOutputVal()*gradiant + alpha *oldDeltaWeight;
             
             neuron.outputWeights[index].deltaWeight = newDeltaWeight;
             neuron.outputWeights[index].weight += newDeltaWeight;

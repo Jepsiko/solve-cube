@@ -86,16 +86,16 @@ public class Cube3x3x3 extends Cuboid {
         E2();
     }
     
-    void M() { turnFace('x', 1, true); }
-    void MP() { turnFace('x', 1, false); }
-    void M2() { halfTurn('x', 1); }
+    private void M() { turnFace('x', 1, true); }
+    private void MP() { turnFace('x', 1, false); }
+    private void M2() { halfTurn('x', 1); }
     
-    void S() { turnFace('y', 1, true); }
-    void SP() { turnFace('y', 1, false); }
-    void S2() { halfTurn('y', 1); }
+    private void S() { turnFace('y', 1, true); }
+    private void SP() { turnFace('y', 1, false); }
+    private void S2() { halfTurn('y', 1); }
     
-    void E() { turnFace('z', 1, true); }
-    void EP() { turnFace('z', 1, false); }
-    void E2() { halfTurn('z', 1); }
+    private void E() { turnFace('z', 1, true); }
+    private void EP() { turnFace('z', 1, false); }
+    private void E2() { halfTurn('z', 1); }
     //</editor-fold>
 }

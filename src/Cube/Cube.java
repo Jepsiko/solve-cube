@@ -2,9 +2,9 @@ package Cube;
 
 import java.util.Arrays;
 
-abstract public interface Cube {
+public interface Cube {
     
-    public class Cubi {
+    class Cubi {
         char[] colors;
         // colors are in this order : [x, y, z [,...]]
         
@@ -18,10 +18,10 @@ abstract public interface Cube {
         public String toString() { return Arrays.toString(colors); }
     }
     
-    abstract void setup(); // Setup the windows
-    abstract void draw(); // Draw the cube every frame
-    abstract void scramble(int step, boolean verbose); // Scramble the cube
-    abstract int solve(boolean changeCube); // Solve the cube and return the number of step
-    abstract boolean isSolved();
-    abstract boolean isGraphic();
+    void setup(); // Setup the windows
+    void draw(); // Draw the cube every frame
+    void scramble(int step, boolean verbose); // Scramble the cube
+    int solve(boolean changeCube); // Solve the cube and return the number of step
+    boolean isSolved();
+    boolean isGraphic();
 }

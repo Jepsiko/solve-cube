@@ -33,13 +33,11 @@ public class Cuboid extends Frame implements Cube, WindowListener {
     private SimpleUniverse world;
     private BranchGroup myScene;
 
-    private final char[] colors;
 
-    
     //<editor-fold defaultstate="collapsed" desc="Constructors">
-    public Cuboid(int _x, int _y, int _z) {
+    private Cuboid(int _x, int _y, int _z) {
         graphic = false;
-        colors = new char[]{'o', 'r', 'y', 'w', 'g', 'b'};
+        char[] colors = new char[]{'o', 'r', 'y', 'w', 'g', 'b'};
         // Orange   Red      Yellow   White   Blue     Green
         // Left     Right    Down     Up      Back     Front
         
@@ -141,12 +139,12 @@ public class Cuboid extends Frame implements Cube, WindowListener {
         }
     }
 
-    public Cuboid(int size) {
+    Cuboid(int size) {
         // Create a cubic cuboid
         this(size, size, size);
     }
     
-    public Cuboid(int _x, int _y, int _z, boolean graph) {
+    private Cuboid(int _x, int _y, int _z, boolean graph) {
         this(_x, _y, _z);
         graphic = graph;
     }
@@ -524,7 +522,7 @@ public class Cuboid extends Frame implements Cube, WindowListener {
         if (graphic) draw();
     }
 
-    public void halfTurn(char axis_c, int row) {
+    void halfTurn(char axis_c, int row) {
         turnFace(axis_c, row, true);
         turnFace(axis_c, row, true);
     }
@@ -697,23 +695,15 @@ public class Cuboid extends Frame implements Cube, WindowListener {
     public int getAxisZ() { return z; }
     
     private boolean isEdge(int i, int j, int k) {
-        if (i % (x - 1) == 0 && j % (y - 1) == 0) {
-            return true;
-        }
-        if (j % (y - 1) == 0 && k % (z - 1) == 0) {
-            return true;
-        }
-        return i % (x - 1) == 0 && k % (z - 1) == 0;
+        return  i % (x - 1) == 0 && j % (y - 1) == 0 ||
+                j % (y - 1) == 0 && k % (z - 1) == 0 ||
+                i % (x - 1) == 0 && k % (z - 1) == 0;
     }
 
     private boolean isFace(int i, int j, int k) {
-        if (i % (x - 1) == 0 && j % (y - 1) != 0 && k % (z - 1) != 0) {
-            return true;
-        }
-        if (i % (x - 1) != 0 && j % (y - 1) == 0 && k % (z - 1) != 0) {
-            return true;
-        }
-        return i % (x - 1) != 0 && j % (y - 1) != 0 && k % (z - 1) == 0;
+        return  i % (x - 1) == 0 && j % (y - 1) != 0 && k % (z - 1) != 0 ||
+                i % (x - 1) != 0 && j % (y - 1) == 0 && k % (z - 1) != 0 ||
+                i % (x - 1) != 0 && j % (y - 1) != 0 && k % (z - 1) == 0;
     }
 
     private void swapColor(int axis, Cubi cubi) {
