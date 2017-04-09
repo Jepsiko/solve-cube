@@ -2,19 +2,18 @@ package IA;
 
 import java.util.Random;
 
-public class Neuron {
-    
-    static float eta = 0.15f;
-    static float alpha = 0.5f;
-    
-    double outputVal;
-    Connection[] outputWeights;
-    int index;
-    double gradiant;
+class Neuron {
+    private static float eta = 0.15f;
+    private static float alpha = 0.5f;
+
+    private double outputVal;
+    private Connection[] outputWeights;
+    private int index;
+    private double gradiant;
     
     class Connection {
-        public double weight;
-        public double deltaWeight;
+        double weight;
+        double deltaWeight;
         
         Connection() {
             Random rand = new Random();
@@ -65,7 +64,7 @@ public class Neuron {
         }
     }
     
-    double sumDOW(Neuron[] nextLayer) {
+    private double sumDOW(Neuron[] nextLayer) {
         double sum = 0;
         
         for (int i = 0; i < nextLayer.length-1; i++) {
@@ -75,7 +74,7 @@ public class Neuron {
         return sum;
     }
     
-    static double transferFunction(double x, boolean derive) {
+    private static double transferFunction(double x, boolean derive) {
         if (derive) { return 1/((1+Math.abs(x))*(1+Math.abs(x))); }
         else return x/(1+Math.abs(x));
     }
