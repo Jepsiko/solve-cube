@@ -1,5 +1,6 @@
 package IA.SolvingCube;
 
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 import Cube.Cuboid;
@@ -28,6 +29,27 @@ public class testIA {
             System.out.print("Command : ");
             switch (sc.next()) {
                 //<editor-fold defaultstate="collapsed" desc="Movements">
+                case "move":
+                    char axis = '\0';
+                    while (axis != 'x' && axis != 'y' && axis != 'z') {
+                        System.out.print("Axis (x, y or z) : ");
+                        axis = sc.next().charAt(0);
+                    }
+
+                    int row = -1;
+                    while (row <= 0 || row > myCube.maxSide) {
+                        System.out.print("Row : ");
+                        row = sc.nextInt();
+                    }
+
+                    String clockwize = "";
+                    while (!Objects.equals(clockwize, "yes") && !Objects.equals(clockwize, "no")) {
+                        System.out.print("Turn clockwize (yes/no) ? ");
+                        clockwize = sc.next();
+                    }
+
+                    myCube.turnFace(axis, row-1, Objects.equals(clockwize, "yes"));
+                    break;
                 case "u":
                     myCube.U();
                     break;
@@ -130,17 +152,17 @@ public class testIA {
                 case "solveRandom":
                     int step = 0;
                     Random randint = new Random();
-                    int axis;
-                    int row;
+                    int axisRandom;
+                    int rowRandom;
                     char axis_c;
                     long startTime = System.currentTimeMillis();
                     
                     while(!myCube.isSolved()) {
-                        axis = randint.nextInt(3);
-                        axis_c = (char) (axis + 120);
-                        row = randint.nextInt(myCube.maxSide);
+                        axisRandom = randint.nextInt(3);
+                        axis_c = (char) (axisRandom + 120);
+                        rowRandom = randint.nextInt(myCube.maxSide);
 
-                        myCube.turnFace(axis_c, row, randint.nextInt(2) == 0);
+                        myCube.turnFace(axis_c, rowRandom, randint.nextInt(2) == 0);
                         step++;
                     }
                     
