@@ -25,6 +25,7 @@ public class testIA {
 
         //<editor-fold defaultstate="collapsed" desc="Input Loop">
         while (true) {
+            System.out.print("Command : ");
             switch (sc.next()) {
                 //<editor-fold defaultstate="collapsed" desc="Movements">
                 case "u":
@@ -157,6 +158,9 @@ public class testIA {
                     break;
                 case "exit":
                     System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid Command");
                     break;
             }
         }
